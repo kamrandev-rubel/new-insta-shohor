@@ -50,7 +50,6 @@ const switchTab = (id) => {
 };
 
 const createPost = (post) => {
-  console.log(isLiked(post.id))
   const image = post.image;
   const div = document.createElement("article");
   div.classList.add("post");
@@ -62,7 +61,7 @@ const createPost = (post) => {
                     target="_blank"
                     class="post__avatar"
                   >
-                    <img src="${image}" alt="User Picture" />
+                    <img src="${post.userImage}" />
                   </a>
                   <a href="#" class="post__user">phero</a>
                 </div>
@@ -110,7 +109,7 @@ const createPost = (post) => {
                     </a>
 
                     <span>Liked by
-                      <a class="post__name--underline" href="#">user<span id="like-count">123</span></a> and
+                      <a class="post__name--underline" href="#">user123</a> and
                       <a href="#">73 others</a></span>
                   </div>
 
