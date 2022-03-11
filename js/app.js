@@ -29,20 +29,25 @@ const displayContent = (text) => {
 };
 
 const switchTab = (id) => {
-  console.log(reportedPostsId)
   if (id === "posts") {
-    document.getElementById("posts").style.display = "grid";
-    document.getElementById("liked").style.display = "none";
-    document.getElementById("reported").style.display = "none";
+    // document.getElementById("posts").style.display = "grid";
+    // document.getElementById("liked").style.display = "none";
+    // document.getElementById("reported").style.display = "none";
+    addToLiked();
+    reportPost();
   } else if (id === "liked") {
-    document.getElementById("liked").style.display = "block";
-    document.getElementById("posts").style.display = "none";
-    document.getElementById("reported").style.display = "none";
+    // document.getElementById("liked").style.display = "block";
+    // document.getElementById("posts").style.display = "none";
+    // document.getElementById("reported").style.display = "none";
+    // const remainingPosts = posts.filter((post) => likedPostsId.includes(post.id));
+    // showPosts(remainingPosts);
 
     displayLikedPosts();
-  } else {
-    const remainingPosts = posts.filter((post) => reportedPostsId.includes(post.id));
-    showPosts(remainingPosts);
+  } else if (id === "reported") {
+    // document.getElementById("reported").style.display = "block";
+    // document.getElementById("posts").style.display = "none";
+    // document.getElementById("liked").style.display = "none";
+
     displayReportedPosts();
   }
 };
@@ -139,15 +144,15 @@ const showPosts = (posts) => {
 };
 
 const displayLikedPosts = () => {
-  const likedPosts = getLikedPosts();
-  likedPosts.forEach((post) => {
+  showPosts(getLikedPosts());
+  posts.forEach((post) => {
     const div = createPost(post);
     document.getElementById("liked").appendChild(div);
   });
 };
 
 const displayReportedPosts = () => {
-  const reportedPosts = getReportedPosts();
+  showPosts(getReportedPosts());
   posts.forEach((post) => {
     const div = createPost(post);
     document.getElementById("reported").appendChild(div);
