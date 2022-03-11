@@ -77,7 +77,84 @@
                 <h1>Reported posts</h1>
             </div>
         </main>
+        <section id="accordion-section" class="container">
+            <div class="accordion" id="accordionPanelsStayOpenExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
+                            aria-controls="panelsStayOpen-collapseOne">
+                            <b>What does javascript work?</b>
+                        </button>
+                    </h2>
+                    <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show"
+                        aria-labelledby="panelsStayOpen-headingOne">
+                        <div class="accordion-body">
+                            Javascript is a scripting language for the web. It is an interpreted language which means it
+                            does not need to compile or translate the code. Javascript does not work without a browser. The web
+                            browser loads a web page, parses the HTML, and creates a Document Object Model for the content. The
+                            HTML and CSS are put together by the DOM to create the web page first. Then, the browsers' JavaScript
+                            engine loads JavaScript files and inline code but does not run the code immediately. It waits for the HTML
+                            and CSS to finish loading. Once this is done, the JavaScript is executed in the order the code is written.
+                            This results in the DOM being updated by JavaScript code and rendered by the browser.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false"
+                            aria-controls="panelsStayOpen-collapseTwo">
+                            <b>What is the difference between Local storage & Session storage?</b>
+                        </button>
+                    </h2>
+                    <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse"
+                        aria-labelledby="panelsStayOpen-headingTwo">
+                        <div class="accordion-body">
+                            <b>Local Storage:</b> It keeps storing the user information data without expiration date this data will not be
+                            deleted when a user closes the browser windows. It will be available for days, weeks, months, and years.
+                            Local storage has 4 methods:
+                            1. setItem Method
+                            2. getItem Method
+                            3. removeItem Method
+                            4. Clear Method <br>
+                            <b>Session Storage:</b> Session Storage objects can be accessed using the sessionStorage read-only
+                            property. The sessionStorage data is cleared when the page session ends. Session Storage property
+                            maintains a separate storage area for each given origin that's available for the duration of the page
+                            session i.e as long as the browser is open, including page reloads and restores. Session Storage has 4
+                            methods:
+                            5. setItem Method
+                            6. getItem Method
+                            7. removeItem Method
+                            8. Clear Method
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false"
+                            aria-controls="panelsStayOpen-collapseThree">
+                            <b>How does javascript event loop do</b>
+                        </button>
+                    </h2>
+                    <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse"
+                        aria-labelledby="panelsStayOpen-headingThree">
+                        <div class="accordion-body">
+                            The event loop has one main function, at every tick of the javascript run process, it looks at the <b>callstack</b> and checks
+                            if any function or activity is available, if none is available it pushes items from the queue into it, then that
+                            operation is later run on the stack.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
         <footer></footer>
+
+        <!-- Option 1: Bootstrap Bundle with Popper -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+            crossorigin="anonymous"></script>
 
         <!-- add javascript  file  -->
         <script src="./js/app.js"></script>

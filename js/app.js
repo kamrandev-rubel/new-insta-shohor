@@ -18,6 +18,7 @@ const isLiked = (id) => {
 const addToLiked = (id) => {
   likedPostsId.push(id);
   showPosts(posts);
+  reportPost()
 };
 const reportPost = (id) => {
   reportedPostsId.push(id);
@@ -28,29 +29,45 @@ const displayContent = (text) => {
   return text.length < 30 ? text : text.slice(0, 30) + "<span class='fw-bold'>... read more</span>";
 };
 
-const switchTab = (id) => {
+// another way to solve issue 
+
+/* const switchTab = (id) => {
   if (id === "posts") {
-    // document.getElementById("posts").style.display = "grid";
-    // document.getElementById("liked").style.display = "none";
-    // document.getElementById("reported").style.display = "none";
     addToLiked();
     reportPost();
+    document.getElementById("accordion-section").style.display = "block";
   } else if (id === "liked") {
-    // document.getElementById("liked").style.display = "block";
-    // document.getElementById("posts").style.display = "none";
-    // document.getElementById("reported").style.display = "none";
-    // const remainingPosts = posts.filter((post) => likedPostsId.includes(post.id));
-    // showPosts(remainingPosts);
-
     displayLikedPosts();
+    document.getElementById("accordion-section").style.display = "none";
   } else if (id === "reported") {
-    // document.getElementById("reported").style.display = "block";
-    // document.getElementById("posts").style.display = "none";
-    // document.getElementById("liked").style.display = "none";
+    displayReportedPosts();
+    document.getElementById("accordion-section").style.display = "none";
+  }
+}; */
+const switchTab = (id) => {
+  if (id === "posts") {
+    document.getElementById("posts").style.display = "grid";
+    document.getElementById("liked").style.display = "none";
+    document.getElementById("reported").style.display = "none";
+    document.getElementById("accordion-section").style.display = "block";
+
+  } else if (id === "liked") {
+    document.getElementById("liked").style.display = "block";
+    document.getElementById("posts").style.display = "none";
+    document.getElementById("reported").style.display = "none";
+    document.getElementById("accordion-section").style.display = "none";
+    
+    displayLikedPosts();
+  } else {
+    document.getElementById("reported").style.display = "block";
+    document.getElementById("posts").style.display = "none";
+    document.getElementById("liked").style.display = "none";
+    document.getElementById("accordion-section").style.display = "none";
 
     displayReportedPosts();
   }
 };
+
 
 const createPost = (post) => {
   const image = post.image;
@@ -136,14 +153,16 @@ const createPost = (post) => {
 const showPosts = (posts) => {
   const productsContainer = document.getElementById("posts");
   productsContainer.innerHTML = "";
-
+  
   posts.forEach((post) => {
     const div = createPost(post);
     productsContainer.appendChild(div);
   });
 };
 
-const displayLikedPosts = () => {
+// Another way to solve this issue 
+
+/* const displayLikedPosts = () => {
   showPosts(getLikedPosts());
   posts.forEach((post) => {
     const div = createPost(post);
@@ -154,6 +173,37 @@ const displayLikedPosts = () => {
 const displayReportedPosts = () => {
   showPosts(getReportedPosts());
   posts.forEach((post) => {
+    const div = createPost(post);
+    document.getElementById("reported").appendChild(div);
+  });
+};
+
+const loadPosts = async () => {
+  let data = await fetch('../data/posts.json');
+  posts = await data.json();
+  showPosts(posts);
+}
+
+loadPosts();
+ */
+
+
+const displayLikedPosts = () => {
+  document.getElementById('liked').innerHTML = '';
+  document.getElementById('liked').innerHTML = `<h1>Liked posts</h1>`
+  const likedPosts = getLikedPosts();
+  likedPosts.forEach((post) => {
+    const div = createPost(post);
+    document.getElementById("liked").appendChild(div);
+  });
+};
+
+const displayReportedPosts = () => {
+  document.getElementById('reported').innerHTML = ''
+  document.getElementById('reported').innerHTML = `<h1>Reported posts</h1>`
+  
+  const reportedPosts = getReportedPosts();
+  reportedPosts.forEach((post) => {
     const div = createPost(post);
     document.getElementById("reported").appendChild(div);
   });
